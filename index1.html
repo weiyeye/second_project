@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .banner{
+        width:800px;
+        margin:0 auto;
+        overflow: hidden;
+    }
+    .btn{
+        width:800px;
+        margin:20px auto;
+    }
+    .btn span{
+        display: inline-block;
+        width:60px;
+        height:30px;
+        background: #000;
+        text-align: center;
+        line-height: 30px;
+        color:#fff;
+        border-radius: 10px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+    .banner_container{
+        width:300%;
+        height:210px;
+        transition: all 0.5s ease;
+    }
+    .banner_container img{
+        float: left;
+        width:800px;
+        height:210px;
+    }
+</style>
+<body>
+    <div class="banner">
+        <div class="banner_container">
+            <img src="images/banner_1.jpg" alt="">
+            <img src="images/banner_2.jpg" alt="">
+            <img src="images/banner_3.jpg" alt="">
+        </div>
+    </div>
+    <div class="btn">
+        <span>上一张</span>
+        <span>下一张</span>
+    </div>
+    
+</body>
+</html>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script>
+    $(function(){
+        var index = 0;
+        $(".btn span:first").click(function(){
+            index--;
+            if(index<0){
+                index = 2;
+            }
+            $(".banner_container").css({
+               "transform": "translate(-"+(800*index)+"px)"
+           })
+          
+        })
+        // C:\WINDOWS\Sysnative\WindowsPowerShell\v1.0\powershell.exe
+        // C:\Program Files\Git\bin\bash.exe
+        // adfadfaf
+        // dafadfajdfkajfdkajkdf 
+        $(".btn span:last").click(function(){
+            index++;
+            if(index>=3){
+                index = 0;
+            }
+            $(".banner_container").css({
+               "transform": "translate(-"+(800*index)+"px)"
+           })
+        })
+        setInterval(function(){
+            index++;
+            if(index>=3){
+                index = 0;
+            }
+            $(".banner_container").css({
+               "transform": "translate(-"+(800*index)+"px)"
+           })
+        },4000)
+    })
+</script>

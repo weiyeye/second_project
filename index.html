@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .banner{
+        width:800px;
+        margin:0 auto;
+    }
+    .banner img{
+        width:100%;
+        height:auto;
+    }
+    .btn{
+        width:800px;
+        margin:20px auto;
+    }
+    .btn span{
+        display: inline-block;
+        width:60px;
+        height:30px;
+        background: #000;
+        text-align: center;
+        line-height: 30px;
+        color:#fff;
+        border-radius: 10px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div class="banner">
+        <img src="images/banner_1.jpg" alt="">
+        <img src="images/banner_2.jpg" alt="" style="display: none;">
+        <img src="images/banner_3.jpg" alt="" style="display: none;">
+    </div>
+    <div class="btn">
+        <span>上一张</span>
+        <span>下一张</span>
+    </div>
+    <!-- adfadfadfa -->
+</body>
+</html>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script>
+    $(function(){
+        var index = 0;
+        $(".btn span:first").click(function(){
+            index--;
+            if(index<0){
+                index = 2;
+            }
+            var a = $(".banner img").eq(index).fadeIn().siblings().hide();
+        })
+        $(".btn span:last").click(function(){
+            index++;
+            console.log(index);
+            if(index>=3){
+                index = 0;
+            }
+            
+            var a = $(".banner img").eq(index).fadeIn().siblings().hide();
+        })
+        setInterval(function(){
+            index++;
+            if(index>=3){
+                index = 0;
+            }
+            var a = $(".banner img").eq(index).fadeIn().siblings().hide();
+        },4000)
+    })
+</script>
